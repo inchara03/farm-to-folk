@@ -1,0 +1,38 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.ensemble import RandomForestClassifier,ExtraTreesClassifier
+from sklearn.metrics import log_loss,matthews_corrcoef,f1_score,precision_score
+data=pd.read_csv('Crop_recommendation.csv')
+print(data.columns)
+print(data.isna().sum())
+print(data.info())
+print(data.describe())
+print(data['label'].value_counts())
+lab=LabelEncoder()
+data['lab']=lab.fit_transform(data['label'])
+for i in range(len(data['lab'])):
+print(data['label'][i]," : ",data['lab'][i])
+'''x=[]
+for i in data.columns.values:
+data['z_scores']=(data[i]-data[i].mean())/data[i].std()
+outlier=np.abs(data['z_scores']>3).sum()
+if outlier>0:
+x.append(i)
+print(len(data))
+thresh=3
+for i in x:
+upper=data[i]+thresh*data[i].std()
+lower=data[i]-thresh*data[i].std()
+data=data[(data[i]>lower)&(data[i]<upper)]
+x=data[['N','P','K','temperature', 'humidity', 'rainfall']]
+y=data['label']
+print(' ')
+print(x.columns)
+x_train,x_test,y_train,y_test=train_test_split(x,y)
+rf=RandomForestClassifier()
+rf.fit(x_train,y_train)
+print(rf.score(x_test,y_test))
+print(f1_score(y_test,rf.predict(x_test),average='macro'))
+print(matthews_corrcoef(y_test,rf.predict(x_test)))

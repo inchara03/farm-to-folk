@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agriculture Insights</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6')
+no-repeat center center fixed;
+background-size: cover;
+color: #2d572c;
+}
+header {
+text-align: center;
+padding: 20px;
+background-color: rgba(20, 90, 50, 0.8);
+color: #ffffff;
+font-size:2.5rem;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.container …
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plant Disease Prediction</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+background: linear-gradient(to bottom, #e9f7ef, #d4efdf);
+color: #2d572c;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh;
+background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6') norepeat center center fixed;
+background-size: cover;
+color: #2d572c;
+}
+h1 {
+font-size: 2.5rem;
+margin-bottom: 1rem;
+color: #145a32;
+}
+.links {
+display: flex;
+justify-content: center;
+gap: 15px;
+margin-top: 20px;
+}
+.links a {
+text-decoration: none;
+background-color: #145a32;
+color: #ffffff;
+padding: 10px 20px;
+border-radius: 5px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+font-size: 1rem;
+}
+.links a:hover {
+background-color: #117a34;
+}
+form {
+background: #ffffff;
+padding: 2rem;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+text-align: center;
+max-width: 400px;
+width: 100%;
+}
+label {
+font-size: 1rem;
+margin-bottom: 0.5rem;
+display: block;
+color: #145a32;
+}
+input[type="file"] {
+margin-bottom: 1rem;
+font-size: 1rem;
+padding: 0.5rem;
+border: 1px solid #b3b3b3;
+border-radius: 5px;
+width: 100%;
+}
+button {
+background: #28b463; 
+color: #ffffff;
+font-size: 1rem;
+padding: 0.7rem 1.5rem;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+button:hover {
+background: #1d8348;
+}
+.result-container {
+background: #ffffff;
+margin-top: 1.5rem;
+padding: 1.5rem;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+text-align: center;
+max-width: 400px;
+width: 100%;
+}
+button {
+background: #28b463;
+color: #ffffff;
+font-size: 1rem;
+padding: 0.7rem 1.5rem;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+button:hover { 
+background: #1d8348;
+}
+result-container {
+background: #ffffff;
+margin-top: 1.5rem;
+padding: 1.5rem;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+text-align: center;
+max-width: 400px;
+width: 100%;
+}
+<body>
+<h1>Plant Disease Prediction</h1>
+<form action="/predict" method="post" enctype="multipart/form-data">
+<label for="file">Choose an image:</label>
+<input type="file" name="file" id="file" required>
+<button type="submit">Predict</button>
+</form>
+{% if prediction_class %}
+<div class="result-container">
+<h2>Prediction: {{ prediction_class }}</h2>
+<p>Confidence: {{ confidence }}%</p>
+<p>Description: {{ disease_description }}</p>
+<img src="{{ image_path }}" alt="Uploaded Leaf Image">
+</div>
+{% endif %}
+<div class="links">
+<a href="/disease">Leaf Disease Prediction</a>
+<a href="/fertilizer">Fertilizer Recommendation</a>
+<a href="/crop">Crop Recommendation</a>
+</div>
+</body>
+</html>
